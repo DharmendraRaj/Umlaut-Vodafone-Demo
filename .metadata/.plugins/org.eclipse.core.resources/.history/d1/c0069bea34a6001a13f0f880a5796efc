@@ -1,0 +1,10 @@
+package com.umlaut.umlautdemobackend.Repository.copy;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+import com.umlaut.umlautdemobackend.model.employee;
+
+@Repository
+public interface EmployeeRepository extends JpaRepository<employee,Long>{
+
+}

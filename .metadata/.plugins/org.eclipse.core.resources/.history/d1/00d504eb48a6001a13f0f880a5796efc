@@ -1,0 +1,15 @@
+package com.umlaut.umlautdemobackend;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.ComponentScan;
+
+@SpringBootApplication
+@ComponentScan({ "com.umlaut.controller, com.umlaut.Model, com.umlaut.Repository"})
+public class UmlautDemoBackendApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(UmlautDemoBackendApplication.class, args);
+	}
+
+}

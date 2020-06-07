@@ -1,0 +1,13 @@
+package com.umlaut.umlautdemobackend;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class UmlautDemoBackendApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(UmlautDemoBackendApplication.class, args);
+		System.out.println("I am in running mode");
+	}
+
+}

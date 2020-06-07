@@ -1,0 +1,32 @@
+package com.umlaut.umlautdemobackend;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+public class EmployeeController {
+
+	@Autowired
+	private EmployeeRepository employeeRepository;
+
+	// Create Employee
+	@PostMapping("/saveEmployee")
+	public Employee createEmployee(@RequestBody Employee employee) {
+		employee.setId(1);
+		employee.setFirstName("Dharmendra");
+		employee.setLastName("Rajput");
+		employee.setEmailAddress("r@gmail.com");
+		System.out.println("List of Employee :" + employee);
+		return employeeRepository.save(employee);
+	}
+	
+    @RequestMapping("/hello")
+	public String testHello() {
+		return "Hello World";
+		
+	}
+}
+

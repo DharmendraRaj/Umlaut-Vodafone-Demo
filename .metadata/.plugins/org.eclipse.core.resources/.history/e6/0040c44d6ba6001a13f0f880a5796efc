@@ -1,0 +1,52 @@
+package com.umlaut.umlautdemobackend;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+
+@RestController
+public class EmployeeController {
+
+	@Autowired
+	private EmployeeRepository employeeRepository;
+
+	// Create Employee
+	@RequestMapping("/saveEmployee")
+	public Employee createEmployee(@Validated @RequestBody Employee employee) {
+		System.out.println("I am inside post method");
+		employee.setId(1);
+		employee.setFirstName("Dharmendra");
+		employee.setLastName("Rajput");
+		employee.setEmailAddress("r@gmail.com");
+		System.out.println("List of Employee :" + employee);
+		return employeeRepository.save(employee);
+	}
+	
+	//Get All Employee List
+	@GetMapping("/employees")
+    public java.util.List<Employee> getAllEmployees() {
+        return employeeRepository.findAll();
+    }
+
+	//Delete Employee by ID
+	@DeleteMapping("/employees/{id}")
+    public Map<String, Boolean> deleteEmployee(@PathVariable(value = "id") Long employeeId) {
+        Employee employee = employeeRepository.findById(employeeId)
+        employeeRepository.delete(employee);
+        Map<String, Boolean> response = new HashMap<>();
+        response.put("deleted", Boolean.TRUE);
+        return response;
+    }
+	
+
+	
+}
